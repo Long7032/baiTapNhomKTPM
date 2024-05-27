@@ -1,0 +1,27 @@
+package com.example.demo.controller;
+
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+
+
+@RestController
+public class OrderController {
+
+	@GetMapping("/getOrderList")
+	public String getMethodName() {
+		return "getOrderList";
+	}
+	
+	@PostMapping("/addNewOrder")
+	public String addNewOrder() {
+		//TODO: process POST request
+		
+		return "add order ok";
+	}
+	
+	
+	
+}

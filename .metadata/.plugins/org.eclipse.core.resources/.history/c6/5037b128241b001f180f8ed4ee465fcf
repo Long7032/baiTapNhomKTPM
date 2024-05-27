@@ -1,0 +1,17 @@
+package com.example.demo.controller;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+
+@RestController
+public class DemoController {
+	 @Autowired
+	    private Resilience4JCircuitBreaker circuitBreaker;
+	@GetMapping("/getDemoCallService")
+	public String getMethodName() {
+		return "Call Ok";
+	}
+	
+
+}

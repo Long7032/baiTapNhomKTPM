@@ -1,0 +1,52 @@
+package com.example.demo.controller;
+
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@RestController
+@RequestMapping("/api/v1")
+public class ProductController {
+
+
+	
+	
+	@PostMapping("/findProduct")
+	public Optional<Product> findProduct(@RequestParam int IdProduct) {
+		//TODO: process POST request
+		System.out.println(productRepository.findById(IdProduct));;
+		return productRepository.findById(IdProduct);
+	}
+	@PostMapping("/findAllProduct")
+	public List<Product> findAllProduct() {
+		//TODO: process POST request
+		System.out.println(	productRepository.findAll());;
+		return productRepository.findAll();
+	}
+	
+	@RequestMapping("/deleteProduct")
+	public String deleteProduct(@RequestParam int IdProduct) {
+		//TODO: process POST request
+		productRepository.deleteById(IdProduct);
+		System.out.println("delete successful!!");
+		return "delete product by id";
+	}
+	
+	@RequestMapping("/AddProduct")
+	public String AddProduct(@RequestBody Product product) {
+		//TODO: process POST request
+		productRepository.save(product);
+		System.out.println("Add successfull");
+		return "Add product successful";
+	}
+	@RequestMapping("/UpdateProduct")
+	public String UpdateProduct( @RequestParam int IdProduct, @RequestBody Product product) {
+		//TODO: process POST request
+		productRepository.deleteById(IdProduct);
+		productRepository.save(product);
+		System.out.println("Update successfull");
+		return "Update product successful";
+	}
+
+
+}

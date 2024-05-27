@@ -1,0 +1,7 @@
+resilience4j:
+  ratelimiter:
+    instances:
+      myRateLimiter:
+        limitForPeriod: 2 # Số lượng request cho phép trong khoảng thời gian
+        limitRefreshPeriod: 1s # Khoảng thời gian giữa các lần reset rate limit
+        timeoutDuration: 1s # Thời gian chờ để lấy quyền truy cập từ RateLimiter

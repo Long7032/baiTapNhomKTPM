@@ -1,0 +1,22 @@
+package com.example.demo.serviceImp;
+
+import java.util.List;
+
+import com.example.demo.entity.Order;
+import com.example.demo.service.OrderService;
+
+public class OrderServiceImp implements OrderService{
+
+	@Override
+	public List<Order> getListOrder() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void addOrder(Order o) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

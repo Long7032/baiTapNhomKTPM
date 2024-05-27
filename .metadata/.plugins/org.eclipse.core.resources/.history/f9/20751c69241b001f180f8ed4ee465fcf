@@ -1,0 +1,29 @@
+package com.example.demo.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.circuitbreaker.resilience4j.Resilience4JCircuitBreaker;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+@RestController
+public class DemoController {
+	@Autowired
+	private Resilience4JCircuitBreaker circuitBreaker;
+
+	@Autowired
+	private RestTemplate restTemplate = new RestTemplate();
+
+	@GetMapping("/getDemoCallService")
+	public String getMethodName() {
+		return circuitBreaker.run(() -> {
+			// Gọi dịch vụ khác ở đây
+			restTemplate.getForObject("http://localhost:5819/api/v1/getProduct", String.class);
+			return "Kết quả từ dịch vụ khác";
+		}, throwable -> {
+			// Xử lý khi dịch vụ gặp lỗi
+			return "Lỗi khi gọi dịch vụ khác";
+		});
+	}
+
+}

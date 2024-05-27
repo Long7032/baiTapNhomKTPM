@@ -1,0 +1,11 @@
+server:
+  port: 5821
+  
+spring: 
+  cloud:
+    gateway:
+      routes:
+        - id: product_service
+          uri: http://localhost:5820
+          predicates:
+            - Path=/api/v2/**

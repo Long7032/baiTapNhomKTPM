@@ -1,0 +1,22 @@
+package com.example.demo.entity;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "order_details")
+public class OrderDetail {
+	@Column(name = "id_order")
+	private String idOrder;
+	@Id
+	@Column(name= "id_order_detail")
+	private String idOrderDetail;
+	@Id
+	@Column(name="id_product")
+	private String idProduct;
+	private int quantity;
+	private double price;
+	
+}

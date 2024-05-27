@@ -1,0 +1,9 @@
+spring.application.name=GateWayService
+
+server.port=5819
+
+eureka.client.service-url.default-zone=http://localhost:8761/eureka
+
+spring.cloud.gateway.routes[0].id=product-service
+spring.cloud.gateway.routes[0].uri=http://localhost:5820
+spring.cloud.gateway.routes[0].predicates[0]=Path=/api/v1/**

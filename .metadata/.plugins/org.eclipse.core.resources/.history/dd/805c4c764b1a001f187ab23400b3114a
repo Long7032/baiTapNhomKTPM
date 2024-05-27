@@ -1,0 +1,24 @@
+package com.example.demo.controller;
+
+import java.text.ParseException;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.util.JWTUtil;
+import com.nimbusds.jose.JOSEException;
+
+@RestController
+public class AccountController {
+	@Autowired
+	private JWTUtil jwtUtil;
+
+	@GetMapping("/findAccount")
+	public String getMethodName() throws ParseException, JOSEException {
+		String token = jwtUtil.createJWT("khoa", "a", "b", 3600);
+		System.out.println(token);
+		return "findAccount";
+	}
+
+}
